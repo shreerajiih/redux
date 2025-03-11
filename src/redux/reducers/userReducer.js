@@ -10,12 +10,12 @@
 
 const userReducer = (state = null, action) => {
     switch (action.type) {
-        case "CHANGE_NAME":
-            return {
-                ...state,
-                name:action.payload
-            }
-        case "CHANGE_AGE":
+        // case "CHANGE_NAME":
+        //     return {
+        //         ...state,
+        //         name:action.payload
+        //     }
+        case "CHANGE_AGE_SAGA":
             return {
                 ...state,
                 age:action.payload
@@ -24,6 +24,11 @@ const userReducer = (state = null, action) => {
             return {
                 ...state,
                 city:action.payload
+            }
+        case "CHANGE_NAME_SAGA":
+            return {
+                ...state,
+                name:action.payload
             }
         default:
             return state

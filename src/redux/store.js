@@ -6,6 +6,14 @@ import { thunk } from 'redux-thunk';
 // import logger from 'redux-logger'; // for console logging to track previous & next states
 import { composeWithDevTools } from 'redux-devtools-extension'; // for debugging redux stats in browser dev tools -- recommanded 
 
+
+// saga
+
+import rootSaga from './rootSaga';
+import createSagaMiddleware from 'redux-saga';
+const sagaMiddleware = createSagaMiddleware();
+
+
 const mainReducers = combineReducers({
     user: userReducer,
     student: studentReducer
@@ -29,12 +37,25 @@ let commanoInitialObject = {  // if we dont want to [pass] any initial state ins
     }
 }
 
+// const store = createStore(
+//     mainReducers,
+//     commanoInitialObject,
+//     composeWithDevTools(applyMiddleware(thunk))
+//     // applyMiddleware(thunk) // for async operations
+//     //   applyMiddleware(thunk,logger) // for logging :: AMAZING + Async Opereations
+// );
+
+
+// with saga
 const store = createStore(
     mainReducers,
     commanoInitialObject,
-    composeWithDevTools(applyMiddleware(thunk))
-    // applyMiddleware(thunk)
-    //   applyMiddleware(thunk,logger) // for logging :: AMAZING
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
+    // applyMiddleware(thunk) // for async operations
+    //   applyMiddleware(thunk,logger) // for logging :: AMAZING + Async Opereations
 );
+
+sagaMiddleware.run(rootSaga);
+
 
 export default store;

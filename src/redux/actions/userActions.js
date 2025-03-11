@@ -7,6 +7,13 @@ export const changeUserName = (name) =>{
     }
 }
 
+export const changeUserNameWithSaga = (name) =>{
+    return {
+        type:"CHANGE_NAME_SAGA",
+        payload:name
+    }
+}
+
 export const changeUserAge = (age) =>{
     return {
         type:"CHANGE_AGE",
@@ -14,6 +21,12 @@ export const changeUserAge = (age) =>{
     }
 }
 
+export const changeUserAgeWithSaga = (age) =>{
+    return {
+        type:"CHANGE_AGE_SAGA",
+        payload:age
+    }
+}
 // export const changeUserCity = (city) =>{
 //     return {
 //         type:"CHANGE_CITY",
